@@ -125,7 +125,8 @@ var MP3ChunksPlayer = function() {
    * @private
    */
   var _initializeWebAudio = function() {
-    _context = new webkitAudioContext();
+    var context = (window.AudioContext) ? AudioContext : webkitAudioContext;
+    _context = new context();
     _analyser = _context.createAnalyser();
     _analyser.fftSize = 2048;
   };
